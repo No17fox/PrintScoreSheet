@@ -30,8 +30,8 @@
   ```java
   class Service {
       String readInput() {}
-      String verifyInput() {}
-      void writeToFile() {}
+      boolean verifyInput(String input) {}
+      void writeToFile(String input) {}
       void readFromFile() {}
       List<Student> parseFile() {}
   }
