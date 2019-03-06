@@ -26,9 +26,9 @@ public class Tools {
     public void printScoreSheet(ScoreSheet scoreSheet) {
         System.out.println("\n成绩单");
         System.out.println("姓名|数学|语文|英语|编程|平均分|总分");
-        System.out.println("========================");
+        System.out.println("==================================");
         scoreSheet.getStudentList().forEach(System.out::println);
-        System.out.println("========================");
+        System.out.println("==================================");
         System.out.println("全班总分平均数：" + scoreSheet.getAverage());
         System.out.println("全班总分中位数：" + scoreSheet.getMedian());
     }
