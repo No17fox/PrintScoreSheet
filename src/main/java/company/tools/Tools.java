@@ -4,22 +4,22 @@ import main.java.company.model.ScoreSheet;
 
 public class Tools {
     public void printMainMenu() {
-        System.out.println("1. 添加学生成绩\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1~3）：");
+        System.out.println("\n1. 添加学生成绩\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1~3）：");
     }
 
     public void promptInputStudentInfor(boolean inputErrorFlag) {
         if (inputErrorFlag) {
-            System.out.println("请输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+            System.out.println("\n请输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
         } else {
-            System.out.println("请按正确的格式输入（格式：姓名，学号，学科：成绩，...）：");
+            System.out.println("\n请按正确的格式输入（格式：姓名，学号，学科：成绩，...）：");
         }
     }
 
     public void promptInputStudentSequence(boolean inputErrorFlag) {
         if (inputErrorFlag) {
-            System.out.println("请输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
+            System.out.println("\n请输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
         } else {
-            System.out.println("请按正确的格式输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
+            System.out.println("\n请按正确的格式输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
         }
     }
 
