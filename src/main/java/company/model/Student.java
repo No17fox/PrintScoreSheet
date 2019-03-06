@@ -47,4 +47,21 @@ public class Student {
     public void setSum() {
         this.sum = this.scoreList.values().stream().mapToDouble(Double::valueOf).sum();
     }
+
+    @Override
+    public String toString() {
+        return this.name
+                + "|"
+                + this.scoreList.get("数学")
+                + "|"
+                + this.scoreList.get("语文")
+                + "|"
+                + this.scoreList.get("英语")
+                + "|"
+                + this.scoreList.get("编程")
+                + "|"
+                + this.average
+                + "|"
+                + this.sum;
+    }
 }
