@@ -16,7 +16,7 @@
 
   ```java
   class ScoreSheet {
-      List<Student> students;
+      List<Student> studentList;
       double average;
       double median;
       
@@ -33,7 +33,7 @@
       String verifyInput() {}
       void writeToFile() {}
       void readFromFile() {}
-      Student[] parseFile() {}
+      List<Student> parseFile() {}
   }
   ```
 
