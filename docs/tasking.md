@@ -31,7 +31,7 @@
   class Service {
       String readInput() {}
       boolean verifyInput(String input) {}
-      void writeToFile(String input) {}
+      void writeToFile(String input, String path) {}
       void readFromFile() {}
       List<Student> parseFile() {}
   }
