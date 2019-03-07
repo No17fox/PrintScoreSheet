@@ -3,8 +3,8 @@ package main.java.company.tools;
 import main.java.company.model.ScoreSheet;
 
 public class Tools {
-    public void printMainMenu(boolean inputErrorFlag) {
-        if (inputErrorFlag) {
+    public void printMainMenu(boolean illegalInputflag) {
+        if (illegalInputflag) {
             System.out.println("\n1. 添加学生成绩\n"
                     + "2. 生成成绩单\n"
                     + "3. 退出\n"
@@ -14,16 +14,16 @@ public class Tools {
         }
     }
 
-    public void promptInputStudentInfor(boolean inputErrorFlag) {
-        if (inputErrorFlag) {
+    public void promptInputStudentInfor(boolean illegalInputFlag) {
+        if (illegalInputFlag) {
             System.out.println("\n请输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
         } else {
             System.out.println("\n请按正确的格式输入（格式：姓名，学号，学科：成绩，...）：");
         }
     }
 
-    public void promptInputStudentSequence(boolean inputErrorFlag) {
-        if (inputErrorFlag) {
+    public void promptInputStudentSequence(boolean illegalInputFlag) {
+        if (illegalInputFlag) {
             System.out.println("\n请输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
         } else {
             System.out.println("\n请按正确的格式输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
