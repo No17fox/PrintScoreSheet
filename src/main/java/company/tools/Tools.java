@@ -3,8 +3,15 @@ package main.java.company.tools;
 import main.java.company.model.ScoreSheet;
 
 public class Tools {
-    public void printMainMenu() {
-        System.out.println("\n1. 添加学生成绩\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1~3）：");
+    public void printMainMenu(boolean inputErrorFlag) {
+        if (inputErrorFlag) {
+            System.out.println("\n1. 添加学生成绩\n"
+                    + "2. 生成成绩单\n"
+                    + "3. 退出\n"
+                    + "请输入你的选择（1~3）：");
+        } else {
+            System.out.println("\n请输入你的选择（1~3）：");
+        }
     }
 
     public void promptInputStudentInfor(boolean inputErrorFlag) {
