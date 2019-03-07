@@ -45,7 +45,10 @@ public class Service {
         if (null == subjectAndScore[0]) {
             return false;
         }
-        return subjectAndScore[1].matches("^\\d*$");
+        if (!subjectAndScore[1].matches("^\\d*$")) {
+            return false;
+        }
+        return Double.valueOf(subjectAndScore[1]) >= 0 && Double.valueOf(subjectAndScore[1]) <= 100;
     }
 
 
