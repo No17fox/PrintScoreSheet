@@ -1,5 +1,7 @@
 package main.java.company.service;
 
+import main.java.company.model.ScoreSheet;
+import main.java.company.model.Student;
 import main.java.company.tools.Tools;
 
 import java.io.*;
@@ -58,20 +60,36 @@ public class Service {
         }
     }
 
-    public void readFromFile(String path) {
+    public ScoreSheet readFromFile(String path) {
         File file = new File(path);
+        ScoreSheet scoreSheet = new ScoreSheet();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            do {
+            String line = reader.readLine();
+            while (null != line) {
+                Student student = this.parseLine(line);
+                student.setAverage();
+                student.setSum();
+                scoreSheet.addAStudentToList(student);
                 line = reader.readLine();
-                System.out.println(line);
-            } while (null != line);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return scoreSheet;
     }
 
+    private Student parseLine(String line) {
+        String[] inforArray = line.split("[,，]");
+        Student student = new Student(inforArray[0], Long.valueOf(inforArray[1]));
+        Arrays.stream(inforArray).skip(2).forEach(item -> this.parseScores(student, item));
+        return student;
+    }
 
+    private void parseScores(Student student, String item) {
+        String subject = item.split("[:：]")[0];
+        double score = Double.valueOf(item.split("[:：]")[1]);
+        student.addScoreToScoreList(subject, score);
+    }
 
 
 }
