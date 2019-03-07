@@ -60,7 +60,7 @@ public class Service {
         }
     }
 
-    public List<Student> readFromFile(String path) {
+    private List<Student> readFromFile(String path) {
         File file = new File(path);
         List<Student> studentList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -99,10 +99,17 @@ public class Service {
         return Arrays.stream(studentArray).allMatch(id -> id.matches("^\\d*$"));
     }
 
-    public List<Long> parseStudentSequence(String input) {
+    private List<Long> parseStudentSequence(String input) {
         return Arrays.stream(input.split("[,，]"))
                 .distinct()
                 .map(Long::valueOf)
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> getSelectedStudentInfor(String path, String studentSequence) {
+        return this.readFromFile(path)
+                .stream()
+                .filter(student -> this.parseStudentSequence(studentSequence).contains(student.getId()))
                 .collect(Collectors.toList());
     }
 }
