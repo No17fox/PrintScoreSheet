@@ -1,6 +1,8 @@
 package main.java.company.service;
 
+import main.java.company.model.ScoreSheet;
 import main.java.company.model.Student;
+import main.java.company.tools.Tools;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,8 +11,68 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Service {
+    private Tools tools = new Tools();
 
-    public String readInput() {
+    public void startMainService(String filePath) {
+        boolean verifyResult = true;
+        String selection;
+        do {
+            tools.printMainMenu(verifyResult);
+            selection = this.readInput();
+            verifyResult = this.verifyInputSelection(selection);
+        } while (!verifyResult);
+
+        switch (selection) {
+            case "1":
+                this.addStudentsService(filePath);
+                this.startMainService(filePath);
+                break;
+
+            case "2":
+                this.printScoreSheetService(filePath);
+                this.startMainService(filePath);
+                break;
+
+            case "3":
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void addStudentsService(String filePath) {
+        boolean verifyResult = true;
+        String studentInfor;
+        do {
+            tools.promptInputStudentInfor(verifyResult);
+            studentInfor = this.readInput();
+            verifyResult = this.verifyInputStudentInfor(studentInfor);
+        } while (!verifyResult);
+        this.writeToFile(studentInfor + "\n", filePath);
+        tools.promptAddResult(studentInfor);
+    }
+
+    private void printScoreSheetService(String filePath) {
+        boolean verifyResult = true;
+        String studentSequence;
+        do {
+            tools.promptInputStudentSequence(verifyResult);
+            studentSequence = this.readInput();
+            verifyResult = this.verifyInputStudentSequence(studentSequence);
+        } while (!verifyResult);
+
+        List<Student> studentList = this.getSelectedStudentInfor(filePath, studentSequence);
+
+        ScoreSheet scoreSheet = new ScoreSheet();
+        scoreSheet.setStudentList(studentList);
+        scoreSheet.setAverage();
+        scoreSheet.setMedian();
+
+        tools.printScoreSheet(scoreSheet);
+    }
+
+    private String readInput() {
         String input = null;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -21,7 +83,7 @@ public class Service {
         return input;
     }
 
-    public boolean verifyInputStudentInfor(String studentInfor) {
+    private boolean verifyInputStudentInfor(String studentInfor) {
         if (null == studentInfor) {
             return false;
         }
@@ -51,7 +113,7 @@ public class Service {
         return Double.valueOf(subjectAndScore[1]) >= 0 && Double.valueOf(subjectAndScore[1]) <= 100;
     }
 
-    public void writeToFile(String input, String filePath) {
+    private void writeToFile(String input, String filePath) {
         File file = new File(filePath);
         try (FileWriter fileWriter = new FileWriter(file, true)) {
             fileWriter.write(input);
@@ -91,7 +153,7 @@ public class Service {
         student.addScoreToScoreList(subject, score);
     }
 
-    public boolean verifyInputStudentSequence(String studentSequence) {
+    private boolean verifyInputStudentSequence(String studentSequence) {
         if (null == studentSequence) {
             return false;
         }
@@ -106,14 +168,14 @@ public class Service {
                 .collect(Collectors.toList());
     }
 
-    public List<Student> getSelectedStudentInfor(String path, String studentSequence) {
+    private List<Student> getSelectedStudentInfor(String path, String studentSequence) {
         return this.readFromFile(path)
                 .stream()
                 .filter(student -> this.parseStudentSequence(studentSequence).contains(student.getId()))
                 .collect(Collectors.toList());
     }
 
-    public boolean verifyInputSelection(String selection) {
+    private boolean verifyInputSelection(String selection) {
         return selection.matches("[123]");
     }
 }
