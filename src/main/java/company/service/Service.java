@@ -58,5 +58,20 @@ public class Service {
         }
     }
 
+    public void readFromFile(String path) {
+        File file = new File(path);
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            do {
+                line = reader.readLine();
+                System.out.println(line);
+            } while (null != line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 }
