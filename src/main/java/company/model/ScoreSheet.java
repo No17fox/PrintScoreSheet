@@ -17,8 +17,8 @@ public class ScoreSheet {
         return this.studentList;
     }
 
-    public void addAStudentToList(Student student) {
-        this.studentList.add(student);
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
     public double getAverage() {

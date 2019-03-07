@@ -4,7 +4,10 @@ import main.java.company.model.ScoreSheet;
 import main.java.company.model.Student;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Service {
 
@@ -58,22 +61,22 @@ public class Service {
         }
     }
 
-    public ScoreSheet readFromFile(String path) {
+    public List<Student> readFromFile(String path) {
         File file = new File(path);
-        ScoreSheet scoreSheet = new ScoreSheet();
+        List<Student> studentList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
             while (null != line) {
                 Student student = this.parseLine(line);
                 student.setAverage();
                 student.setSum();
-                scoreSheet.addAStudentToList(student);
+                studentList.add(student);
                 line = reader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return scoreSheet;
+        return studentList;
     }
 
     private Student parseLine(String line) {
@@ -95,5 +98,12 @@ public class Service {
         }
         String[] studentArray = input.split("[,，]");
         return Arrays.stream(studentArray).allMatch(id -> id.matches("^\\d*$"));
+    }
+
+    public List<Long> parseStudentSequence(String input) {
+        return Arrays.stream(input.split("[,，]"))
+                .distinct()
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
     }
 }
