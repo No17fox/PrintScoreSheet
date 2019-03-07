@@ -22,6 +22,11 @@ public class Tools {
         }
     }
 
+    public void promptAddResult(String input) {
+        String name = input.split("[,，]")[0];
+        System.out.println("\n学生" + name + "的成绩已添加");
+    }
+
     public void promptInputStudentSequence(boolean illegalInputFlag) {
         if (illegalInputFlag) {
             System.out.println("\n请输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
