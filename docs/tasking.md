@@ -30,10 +30,11 @@
   ```java
   class Service {
       String readInput() {}
-      boolean verifyInput(String input) {}
+      boolean verifyInputStudentInfor(String input) {}
+      boolean verifyInputStudentSequence(String input) {}
       void writeToFile(String input, String path) {}
       void readFromFile() {}
-      List<Student> parseFile() {}
+      Student parseLine() {}
   }
   ```
 
@@ -41,9 +42,9 @@
 
   ```java
   class Tools {
-      void printMainMenu() {}
-      void promptInputStudentInfor() {}
-      void promptInputStudentSequence() {}
+      void printMainMenu(boolean inputErrorFlag) {}
+      void promptInputStudentInfor(boolean inputErrorFlag) {}
+      void promptInputStudentSequence(boolean inpustErrorFlag) {}
       void printScoreSheet(ScoreSheet scoreSheet) {}
   }
   ```
