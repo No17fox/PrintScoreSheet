@@ -2,13 +2,11 @@ package main.java.company.service;
 
 import main.java.company.model.ScoreSheet;
 import main.java.company.model.Student;
-import main.java.company.tools.Tools;
 
 import java.io.*;
 import java.util.Arrays;
 
 public class Service {
-    private Tools tools = new Tools();
 
     public String readInput() {
         String input = null;
