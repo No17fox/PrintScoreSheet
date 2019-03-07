@@ -112,4 +112,8 @@ public class Service {
                 .filter(student -> this.parseStudentSequence(studentSequence).contains(student.getId()))
                 .collect(Collectors.toList());
     }
+
+    public boolean verifyInputSelection(String selection) {
+        return selection.matches("[123]");
+    }
 }
