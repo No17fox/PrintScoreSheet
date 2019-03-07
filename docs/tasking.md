@@ -35,6 +35,7 @@
       void writeToFile(String input, String path) {}
       void readFromFile() {}
       Student parseLine() {}
+      List<Long> parseStudentSequence(String input) 
   }
   ```
 
