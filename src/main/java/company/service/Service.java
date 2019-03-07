@@ -89,5 +89,11 @@ public class Service {
         student.addScoreToScoreList(subject, score);
     }
 
-
+    public boolean verifyInputStudentSequence(String input) {
+        if (null == input) {
+            return false;
+        }
+        String[] studentArray = input.split("[,，]");
+        return Arrays.stream(studentArray).allMatch(id -> id.matches("^\\d*$"));
+    }
 }
