@@ -21,11 +21,11 @@ public class Service {
         return input;
     }
 
-    public boolean verifyInputStudentInfor(String input) {
-        if (null == input) {
+    public boolean verifyInputStudentInfor(String studentInfor) {
+        if (null == studentInfor) {
             return false;
         }
-        String[] inforArray = input.split("[,，]");
+        String[] inforArray = studentInfor.split("[,，]");
         if (inforArray.length < 6) {
             return false;
         }
@@ -51,8 +51,8 @@ public class Service {
         return Double.valueOf(subjectAndScore[1]) >= 0 && Double.valueOf(subjectAndScore[1]) <= 100;
     }
 
-    public void writeToFile(String input, String path) {
-        File file = new File(path);
+    public void writeToFile(String input, String filePath) {
+        File file = new File(filePath);
         try (FileWriter fileWriter = new FileWriter(file, true)) {
             fileWriter.write(input);
         } catch (IOException e) {
@@ -60,8 +60,8 @@ public class Service {
         }
     }
 
-    private List<Student> readFromFile(String path) {
-        File file = new File(path);
+    private List<Student> readFromFile(String filePath) {
+        File file = new File(filePath);
         List<Student> studentList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
@@ -78,29 +78,29 @@ public class Service {
         return studentList;
     }
 
-    private Student parseLine(String line) {
-        String[] inforArray = line.split("[,，]");
+    private Student parseLine(String studentInfor) {
+        String[] inforArray = studentInfor.split("[,，]");
         Student student = new Student(inforArray[0], Long.valueOf(inforArray[1]));
         Arrays.stream(inforArray).skip(2).forEach(item -> this.parseScores(student, item));
         return student;
     }
 
-    private void parseScores(Student student, String item) {
-        String subject = item.split("[:：]")[0];
-        double score = Double.valueOf(item.split("[:：]")[1]);
+    private void parseScores(Student student, String inputScore) {
+        String subject = inputScore.split("[:：]")[0];
+        double score = Double.valueOf(inputScore.split("[:：]")[1]);
         student.addScoreToScoreList(subject, score);
     }
 
-    public boolean verifyInputStudentSequence(String input) {
-        if (null == input) {
+    public boolean verifyInputStudentSequence(String studentSequence) {
+        if (null == studentSequence) {
             return false;
         }
-        String[] studentArray = input.split("[,，]");
+        String[] studentArray = studentSequence.split("[,，]");
         return Arrays.stream(studentArray).allMatch(id -> id.matches("^\\d*$"));
     }
 
-    private List<Long> parseStudentSequence(String input) {
-        return Arrays.stream(input.split("[,，]"))
+    private List<Long> parseStudentSequence(String studentSequence) {
+        return Arrays.stream(studentSequence.split("[,，]"))
                 .distinct()
                 .map(Long::valueOf)
                 .collect(Collectors.toList());
