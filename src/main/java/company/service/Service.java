@@ -128,17 +128,19 @@ public class Service {
     private List<Student> readFromFile(String filePath) {
         File file = new File(filePath);
         List<Student> studentList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line = reader.readLine();
-            while (null != line) {
-                Student student = this.parseLine(line);
-                student.setAverage();
-                student.setSum();
-                studentList.add(student);
-                line = reader.readLine();
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line = reader.readLine();
+                while (null != line) {
+                    Student student = this.parseLine(line);
+                    student.setAverage();
+                    student.setSum();
+                    studentList.add(student);
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return studentList;
     }
