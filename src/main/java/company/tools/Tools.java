@@ -44,4 +44,8 @@ public class Tools {
         System.out.println("全班总分平均数：" + scoreSheet.getAverage());
         System.out.println("全班总分中位数：" + scoreSheet.getMedian());
     }
+
+    public void promptNonMatch() {
+        System.out.println("未找到该学生，请先添加学生信息");
+    }
 }

@@ -64,12 +64,15 @@ public class Service {
 
         List<Student> studentList = this.getSelectedStudentInfor(filePath, studentSequence);
 
-        ScoreSheet scoreSheet = new ScoreSheet();
-        scoreSheet.setStudentList(studentList);
-        scoreSheet.setAverage();
-        scoreSheet.setMedian();
-
-        tools.printScoreSheet(scoreSheet);
+        if (0 != studentList.size()) {
+            ScoreSheet scoreSheet = new ScoreSheet();
+            scoreSheet.setStudentList(studentList);
+            scoreSheet.setAverage();
+            scoreSheet.setMedian();
+            tools.printScoreSheet(scoreSheet);
+        } else {
+            tools.promptNonMatch();
+        }
     }
 
     private String readInput() {
@@ -168,8 +171,8 @@ public class Service {
                 .collect(Collectors.toList());
     }
 
-    private List<Student> getSelectedStudentInfor(String path, String studentSequence) {
-        return this.readFromFile(path)
+    private List<Student> getSelectedStudentInfor(String filePath, String studentSequence) {
+        return this.readFromFile(filePath)
                 .stream()
                 .filter(student -> this.parseStudentSequence(studentSequence).contains(student.getId()))
                 .collect(Collectors.toList());
