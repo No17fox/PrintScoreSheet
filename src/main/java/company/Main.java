@@ -11,11 +11,15 @@ public class Main {
 
         tools.printMainMenu();
         boolean verifyResult = true;
+        String input;
         do {
             tools.promptInputStudentInfor(verifyResult);
-            String input = service.readInput();
+            input = service.readInput();
             verifyResult = service.verifyInput(input);
         } while (!verifyResult);
+
+        final String PATH = "./docs/students_infor.txt";
+        service.writeToFile(input + "\n", PATH);
 
 
     }

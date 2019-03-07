@@ -2,9 +2,7 @@ package main.java.company.service;
 
 import main.java.company.tools.Tools;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 
 public class Service {
@@ -49,6 +47,15 @@ public class Service {
             return false;
         }
         return Double.valueOf(subjectAndScore[1]) >= 0 && Double.valueOf(subjectAndScore[1]) <= 100;
+    }
+
+    public void writeToFile(String input, String path) {
+        File file = new File(path);
+        try (FileWriter fileWriter = new FileWriter(file, true)) {
+            fileWriter.write(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

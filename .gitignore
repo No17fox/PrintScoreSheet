@@ -22,7 +22,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Automatically generated fils by Intellij Idea
+# Automatically generated files by Intellij Idea
 .idea/
 out/
 *.iml
+
+# Files created by project
+docs/*.txt
