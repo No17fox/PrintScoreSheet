@@ -19,7 +19,7 @@ public class Service {
         return input;
     }
 
-    public boolean verifyInput(String input) {
+    public boolean verifyInputStudentInfor(String input) {
         if (null == input) {
             return false;
         }
