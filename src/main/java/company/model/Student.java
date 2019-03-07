@@ -16,24 +16,12 @@ public class Student {
         this.scoreList = new HashMap<>();
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public long getId() {
         return this.id;
     }
 
-    public Map<String, Double> getScoreList() {
-        return this.scoreList;
-    }
-
     public void addScoreToScoreList(String subject, double score) {
         this.scoreList.put(subject, score);
-    }
-
-    public double getAverage() {
-        return this.average;
     }
 
     public void setAverage() {
