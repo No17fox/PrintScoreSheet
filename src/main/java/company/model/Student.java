@@ -57,4 +57,17 @@ public class Student {
                 + "|"
                 + this.sum;
     }
+
+    @Override
+    public boolean equals(Object student) {
+        if (student instanceof Student) {
+            return this.id == ((Student) student).getId();
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) this.id;
+    }
 }

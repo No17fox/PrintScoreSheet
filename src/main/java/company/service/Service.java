@@ -142,7 +142,7 @@ public class Service {
                 e.printStackTrace();
             }
         }
-        return studentList;
+        return studentList.stream().distinct().collect(Collectors.toList());
     }
 
     private Student parseLine(String studentInfor) {
