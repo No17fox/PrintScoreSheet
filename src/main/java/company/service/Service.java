@@ -93,7 +93,7 @@ public class Service {
             return false;
         }
         String[] inforArray = studentInfor.split("[,，]");
-        if (inforArray.length < 6) {
+        if (inforArray.length < 2) {
             return false;
         }
         if (!inforArray[1].matches("^\\d*$")) {

@@ -43,19 +43,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return this.name
-                + "|"
-                + this.scoreList.get("数学")
-                + "|"
-                + this.scoreList.get("语文")
-                + "|"
-                + this.scoreList.get("英语")
-                + "|"
-                + this.scoreList.get("编程")
-                + "|"
-                + this.average
-                + "|"
-                + this.sum;
+        double math = null != this.scoreList.get("数学") ? this.scoreList.get("数学") : 0;
+        double chinese = null != this.scoreList.get("语文") ? this.scoreList.get("语文")  : 0;
+        double english = null != this.scoreList.get("英语") ? this.scoreList.get("英语") : 0;
+        double programming = null != this.scoreList.get("编程") ? this.scoreList.get("编程") : 0;
+        return this.name + "|" + math + "|" + chinese + "|" + english + "|" + programming + "|" + this.average + "|" + this.sum;
     }
 
     @Override
