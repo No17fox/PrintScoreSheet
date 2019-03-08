@@ -25,7 +25,9 @@ public class Student {
     }
 
     public void setAverage() {
-        this.average = this.scoreList.values().stream().collect(Collectors.averagingDouble(Double::valueOf));
+        this.average = this.scoreList.values()
+                .stream()
+                .collect(Collectors.averagingDouble(Double::valueOf));
     }
 
     public double getSum() {
@@ -33,7 +35,10 @@ public class Student {
     }
 
     public void setSum() {
-        this.sum = this.scoreList.values().stream().mapToDouble(Double::valueOf).sum();
+        this.sum = this.scoreList.values()
+                .stream()
+                .mapToDouble(Double::valueOf)
+                .sum();
     }
 
     @Override
