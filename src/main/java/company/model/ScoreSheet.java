@@ -34,7 +34,10 @@ public class ScoreSheet {
     }
 
     public void setMedian() {
-        List<Double> sortedList = this.studentList.stream().map(Student::getSum).sorted().collect(Collectors.toList());
+        List<Double> sortedList = this.studentList.stream()
+                .map(Student::getSum)
+                .sorted()
+                .collect(Collectors.toList());
         int medianIndex = sortedList.size() / 2;
         if (0 == sortedList.size() % 2) {
             this.median = (sortedList.get(medianIndex) + sortedList.get(medianIndex - 1)) / 2.0;
