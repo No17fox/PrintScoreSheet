@@ -34,6 +34,7 @@ public class Service {
                 break;
 
             case "3":
+                tools.promptExitSystem();
                 break;
 
             default:

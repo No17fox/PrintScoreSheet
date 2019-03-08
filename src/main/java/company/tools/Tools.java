@@ -24,7 +24,7 @@ public class Tools {
 
     public void promptAddResult(String input) {
         String name = input.split("[,，]")[0];
-        System.out.println("\n学生" + name + "的成绩已添加");
+        System.out.println("学生" + name + "的成绩已添加");
     }
 
     public void promptInputStudentSequence(boolean illegalInputFlag) {
@@ -47,5 +47,9 @@ public class Tools {
 
     public void promptNonMatch() {
         System.out.println("未找到该学生，请先添加学生信息");
+    }
+
+    public void promptExitSystem() {
+        System.out.println("正在退出...");
     }
 }
