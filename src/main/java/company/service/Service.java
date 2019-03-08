@@ -35,6 +35,7 @@ public class Service {
 
             case "3":
                 tools.promptExitSystem();
+                this.closeResource();
                 break;
 
             default:
@@ -183,5 +184,13 @@ public class Service {
 
     private boolean verifyInputSelection(String selection) {
         return selection.matches("[123]");
+    }
+
+    private void closeResource() {
+        try {
+            new BufferedReader(new InputStreamReader(System.in)).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
