@@ -2,6 +2,7 @@ package main.java.company.model;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Student {
     private final String name;
@@ -43,11 +44,14 @@ public class Student {
 
     @Override
     public String toString() {
-        double math = null != this.scoreList.get("数学") ? this.scoreList.get("数学") : 0;
-        double chinese = null != this.scoreList.get("语文") ? this.scoreList.get("语文")  : 0;
-        double english = null != this.scoreList.get("英语") ? this.scoreList.get("英语") : 0;
-        double programming = null != this.scoreList.get("编程") ? this.scoreList.get("编程") : 0;
-        return this.name + "|" + math + "|" + chinese + "|" + english + "|" + programming + "|" + this.average + "|" + this.sum;
+        double math = Optional.ofNullable(this.scoreList.get("数学")).orElse(0.0);
+        double chinese = Optional.ofNullable(this.scoreList.get("语文")).orElse(0.0);
+        double english = Optional.ofNullable(this.scoreList.get("英语")).orElse(0.0);
+        double programming = Optional.ofNullable(this.scoreList.get("编程")).orElse(0.0);
+        List<String> scoresInfor = Stream.of(this.name, math, chinese, english, programming, this.average, this.sum)
+                .map(Object::toString)
+                .collect(Collectors.toList());
+        return String.join("|", scoresInfor);
     }
 
     @Override
