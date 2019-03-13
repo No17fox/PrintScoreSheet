@@ -44,10 +44,10 @@ public class Student {
 
     @Override
     public String toString() {
-        double math = Optional.ofNullable(this.scoreList.get("数学")).orElse(0.0);
-        double chinese = Optional.ofNullable(this.scoreList.get("语文")).orElse(0.0);
-        double english = Optional.ofNullable(this.scoreList.get("英语")).orElse(0.0);
-        double programming = Optional.ofNullable(this.scoreList.get("编程")).orElse(0.0);
+        double math = this.scoreList.getOrDefault("数学", 0.0);
+        double chinese = this.scoreList.getOrDefault("语文", 0.0);
+        double english = this.scoreList.getOrDefault("英语", 0.0);
+        double programming = this.scoreList.getOrDefault("编程", 0.0);
         List<String> scoresInfor = Stream.of(this.name, math, chinese, english, programming, this.average, this.sum)
                 .map(Object::toString)
                 .collect(Collectors.toList());
