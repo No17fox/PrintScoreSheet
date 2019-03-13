@@ -56,10 +56,7 @@ public class Student {
 
     @Override
     public boolean equals(Object student) {
-        if (student instanceof Student) {
-            return this.id == ((Student) student).getId();
-        }
-        return false;
+        return student instanceof Student && this.id == ((Student) student).getId();
     }
 
     @Override
